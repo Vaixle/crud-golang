@@ -1,11 +1,11 @@
 package usecase
 
 import (
-	"crud-golang/internal/entity"
-	mock_entity "crud-golang/internal/entity/mocks"
-	"crud-golang/pkg/httpquery"
-	"crud-golang/pkg/logger"
 	"errors"
+	"github.com/Vaixle/crud-golang/internal/entity"
+	mock_entity "github.com/Vaixle/crud-golang/internal/entity/mocks"
+	"github.com/Vaixle/crud-golang/pkg/httpquery"
+	"github.com/Vaixle/crud-golang/pkg/logger"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"

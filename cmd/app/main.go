@@ -1,8 +1,8 @@
 package main
 
 import (
-	"crud-golang/internal/app"
-	"crud-golang/internal/config"
+	"github.com/Vaixle/crud-golang/internal/app"
+	"github.com/Vaixle/crud-golang/internal/config"
 	"log"
 )
 
