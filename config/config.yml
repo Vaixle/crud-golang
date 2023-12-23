@@ -1,0 +1,19 @@
+port: 8000
+
+auth:
+  basic:
+    username: admin
+    password: admin
+
+db:
+  user: empha-soft
+  password: empha-soft
+  port: 5432
+  name: todo
+  host: postgres
+
+http:
+  port: 8080
+
+logger:
+  log_level: 'debug'
