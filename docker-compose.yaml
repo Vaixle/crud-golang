@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    depends_on:
+      - "postgres"
+    volumes:
+      - data:/data
+    restart: always
+    ports:
+      - 8080:8080
+
+  postgres:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_PASSWORD: empha-soft
+      POSTGRES_DB: todo
+      POSTGRES_USER: empha-soft
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    restart: always
+    ports: # debug
+       - 5432:5432
+volumes:
+  data: { }
+  postgres: { }

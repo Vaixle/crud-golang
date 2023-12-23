@@ -1,0 +1,232 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API for TODO tasks",
+        "title": "Empha Soft CRUD",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Petr Petushkov",
+            "url": "https://t.me/vaixle"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://github.com/Vaixle/empha-soft/blob/main/LICENSE"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/todo": {
+            "get": {
+                "description": "Get todo tasks",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todo"
+                ],
+                "summary": "Get todo tasks",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "gt:1",
+                        "description": "greater than",
+                        "name": "filedName1",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "lt:1",
+                        "description": "lower than",
+                        "name": "filedName2",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "ge:1",
+                        "description": "greater and equal than",
+                        "name": "filedName3",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "le:1",
+                        "description": "lower and equal than",
+                        "name": "filedName4",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "eq:1",
+                        "description": "equal",
+                        "name": "filedName5",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "ne:1",
+                        "description": "not equal than",
+                        "name": "filedName6",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "order_by:1",
+                        "description": "greater than",
+                        "name": "filedName7",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "like:1",
+                        "description": "like something",
+                        "name": "filedName8",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "2",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "3",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/crud-golang_internal_entity.Todo"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "{\"error\": \"some error message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create todo task",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todo"
+                ],
+                "summary": "Create todo task",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/crud-golang_internal_entity.Todo"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"error\": \"some error message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/todo/{id}": {
+            "get": {
+                "description": "Get todo task by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todo"
+                ],
+                "summary": "Get todo task",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Todo task ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/crud-golang_internal_entity.Todo"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"error\": \"some error message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "crud-golang_internal_entity.Todo": {
+            "type": "object",
+            "required": [
+                "description",
+                "status"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "some text"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "open/close"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "gorm.DeletedAt": {
+            "type": "object",
+            "properties": {
+                "time": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if Time is not NULL",
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
+        }
+    }
+}

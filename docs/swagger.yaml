@@ -1,0 +1,158 @@
+basePath: /api/v1
+definitions:
+  crud-golang_internal_entity.Todo:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        example: some text
+        type: string
+      id:
+        type: integer
+      status:
+        example: open/close
+        type: string
+      updatedAt:
+        type: string
+    required:
+    - description
+    - status
+    type: object
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+host: localhost:8080
+info:
+  contact:
+    name: Petr Petushkov
+    url: https://t.me/vaixle
+  description: API for TODO tasks
+  license:
+    name: MIT
+    url: https://github.com/Vaixle/empha-soft/blob/main/LICENSE
+  termsOfService: http://swagger.io/terms/
+  title: Empha Soft CRUD
+  version: "1.0"
+paths:
+  /todo:
+    get:
+      description: Get todo tasks
+      parameters:
+      - description: greater than
+        example: gt:1
+        in: query
+        name: filedName1
+        type: string
+      - description: lower than
+        example: lt:1
+        in: query
+        name: filedName2
+        type: string
+      - description: greater and equal than
+        example: ge:1
+        in: query
+        name: filedName3
+        type: string
+      - description: lower and equal than
+        example: le:1
+        in: query
+        name: filedName4
+        type: string
+      - description: equal
+        example: eq:1
+        in: query
+        name: filedName5
+        type: string
+      - description: not equal than
+        example: ne:1
+        in: query
+        name: filedName6
+        type: string
+      - description: greater than
+        example: order_by:1
+        in: query
+        name: filedName7
+        type: string
+      - description: like something
+        example: like:1
+        in: query
+        name: filedName8
+        type: string
+      - description: page
+        example: "2"
+        in: query
+        name: page
+        type: string
+      - description: limit
+        example: "3"
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/crud-golang_internal_entity.Todo'
+            type: array
+        "400":
+          description: '{"error": "some error message"}'
+          schema:
+            type: string
+      summary: Get todo tasks
+      tags:
+      - todo
+    post:
+      consumes:
+      - application/json
+      description: Create todo task
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/crud-golang_internal_entity.Todo'
+        "400":
+          description: '{"error": "some error message"}'
+          schema:
+            type: string
+      summary: Create todo task
+      tags:
+      - todo
+  /todo/{id}:
+    get:
+      description: Get todo task by id
+      parameters:
+      - description: Todo task ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/crud-golang_internal_entity.Todo'
+        "400":
+          description: '{"error": "some error message"}'
+          schema:
+            type: string
+      summary: Get todo task
+      tags:
+      - todo
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
