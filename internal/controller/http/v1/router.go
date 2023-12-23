@@ -8,7 +8,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	// Swagger docs.
-	_ "crud-golang/docs"
+	_ "github.com/Vaixle/crud-golang/docs"
 )
 
 // NewRouter -

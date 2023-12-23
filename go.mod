@@ -1,5 +1,4 @@
-module github.com/Vaixle/crud-golang/crud-golang
-
+module github.com/Vaixle/crud-golang
 go 1.21.1
 
 require (
