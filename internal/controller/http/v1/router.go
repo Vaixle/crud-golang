@@ -14,7 +14,7 @@ import (
 // NewRouter -
 // Swagger spec:
 
-// @title           Empha Soft CRUD
+// @title           GOLANG CRUD
 // @version         1.0
 // @description     API for TODO tasks
 // @termsOfService  http://swagger.io/terms/

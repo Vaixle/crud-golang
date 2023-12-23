@@ -111,7 +111,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/crud-golang_internal_entity.Todo"
+                                "$ref": "#/definitions/github_com_Vaixle_crud-golang_internal_entity.Todo"
                             }
                         }
                     },
@@ -139,7 +139,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/crud-golang_internal_entity.Todo"
+                            "$ref": "#/definitions/github_com_Vaixle_crud-golang_internal_entity.Todo"
                         }
                     },
                     "400": {
@@ -174,7 +174,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/crud-golang_internal_entity.Todo"
+                            "$ref": "#/definitions/github_com_Vaixle_crud-golang_internal_entity.Todo"
                         }
                     },
                     "400": {
@@ -188,7 +188,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "crud-golang_internal_entity.Todo": {
+        "github_com_Vaixle_crud-golang_internal_entity.Todo": {
             "type": "object",
             "required": [
                 "description",
@@ -210,6 +210,10 @@ const docTemplate = `{
                 },
                 "status": {
                     "type": "string",
+                    "enum": [
+                        "open",
+                        "close"
+                    ],
                     "example": "open/close"
                 },
                 "updatedAt": {
@@ -243,7 +247,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8080",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
-	Title:            "Empha Soft CRUD",
+	Title:            "GOLANG CRUD",
 	Description:      "API for TODO tasks",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

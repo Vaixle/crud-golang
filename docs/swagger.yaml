@@ -1,6 +1,6 @@
 basePath: /api/v1
 definitions:
-  crud-golang_internal_entity.Todo:
+  github_com_Vaixle_crud-golang_internal_entity.Todo:
     properties:
       createdAt:
         type: string
@@ -12,6 +12,9 @@ definitions:
       id:
         type: integer
       status:
+        enum:
+        - open
+        - close
         example: open/close
         type: string
       updatedAt:
@@ -38,7 +41,7 @@ info:
     name: MIT
     url: https://github.com/Vaixle/empha-soft/blob/main/LICENSE
   termsOfService: http://swagger.io/terms/
-  title: Empha Soft CRUD
+  title: GOLANG CRUD
   version: "1.0"
 paths:
   /todo:
@@ -102,7 +105,7 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/crud-golang_internal_entity.Todo'
+              $ref: '#/definitions/github_com_Vaixle_crud-golang_internal_entity.Todo'
             type: array
         "400":
           description: '{"error": "some error message"}'
@@ -121,7 +124,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/crud-golang_internal_entity.Todo'
+            $ref: '#/definitions/github_com_Vaixle_crud-golang_internal_entity.Todo'
         "400":
           description: '{"error": "some error message"}'
           schema:
@@ -144,7 +147,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/crud-golang_internal_entity.Todo'
+            $ref: '#/definitions/github_com_Vaixle_crud-golang_internal_entity.Todo'
         "400":
           description: '{"error": "some error message"}'
           schema:
