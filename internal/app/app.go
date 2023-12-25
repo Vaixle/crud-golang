@@ -11,18 +11,10 @@ import (
 	"github.com/Vaixle/crud-golang/pkg/logger"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
-	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 )
-
-type App struct {
-	httpServer *http.Server
-
-	//bookmarkUC bookmark.UseCase
-	//authUC     auth.UseCase
-}
 
 func Run() {
 	l := logger.New(viper.GetString("logger.log_level"))
