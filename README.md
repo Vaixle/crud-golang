@@ -1,7 +1,8 @@
 # crud-golang
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
-![GitHub License](https://img.shields.io/github/license/vaixle/empha-soft)
+![GitHub License](https://img.shields.io/github/license/vaixle/crud-golang)
+
 
 ## Conntents:
 
