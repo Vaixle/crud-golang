@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"github.com/Vaixle/crud-golang/internal/entity"
 	"github.com/Vaixle/crud-golang/pkg/httpquery"
 	"github.com/Vaixle/crud-golang/pkg/logger"
@@ -46,7 +47,7 @@ func (t *todoController) getTodoTasks(gc *gin.Context) {
 	filterOptions, pagination, err := httpquery.ParseQueryParams(gc.Request.URL.Query())
 	if err != nil {
 		gc.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"error": "error query params",
 		})
 		return
 	}
@@ -54,7 +55,7 @@ func (t *todoController) getTodoTasks(gc *gin.Context) {
 	tasks, err := t.useCase.GetTasks(filterOptions, pagination)
 	if err != nil {
 		gc.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"error": "error get tasks",
 		})
 		return
 	}
@@ -76,7 +77,7 @@ func (t *todoController) getTaskById(gc *gin.Context) {
 	if err != nil {
 		t.l.Error(err, "http - v1 - get task")
 		gc.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"error": "error id param",
 		})
 	}
 
@@ -84,7 +85,7 @@ func (t *todoController) getTaskById(gc *gin.Context) {
 	if err != nil {
 		t.l.Error(err, "http - v1 - get task")
 		gc.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"error": fmt.Sprintf("error get task by id %d", id),
 		})
 		return
 	}
@@ -113,7 +114,7 @@ func (t *todoController) createTask(gc *gin.Context) {
 	if err := t.useCase.SaveTask(&task); err != nil {
 		t.l.Error(err, "http - v1 - save task")
 		gc.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
+			"error": "create task",
 		})
 		return
 	}
