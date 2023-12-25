@@ -85,7 +85,7 @@ func getPagination(values map[string][]string) (Pagination, error) {
 	} else {
 		pageStr := pageStrValues[0]
 		if pageStr == "" {
-			pagination.Limit = defaultPage
+			pagination.Page = defaultPage
 		} else {
 			pageInt, err := strconv.Atoi(pageStr)
 			if err != nil {
