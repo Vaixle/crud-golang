@@ -2,18 +2,18 @@ ARG GO_VERSION=1.21
 
 FROM golang:${GO_VERSION}-alpine AS builder
 
-WORKDIR ${GOPATH}/src/empha-soft
+WORKDIR ${GOPATH}/src/crud-golang
 
-COPY go.mod ${GOPATH}/src/empha-soft
-COPY go.sum ${GOPATH}/src/empha-soft
+COPY go.mod ${GOPATH}/src/crud-golang
+COPY go.sum ${GOPATH}/src/crud-golang
 RUN go mod download
 
-COPY ./cmd/app/main.go ${GOPATH}/src/empha-soft
-COPY config ${GOPATH}/src/empha-soft/config
-COPY internal ${GOPATH}/src/empha-soft/internal
-COPY migration ${GOPATH}/src/empha-soft/migration
-COPY docs ${GOPATH}/src/empha-soft/docs
-COPY pkg ${GOPATH}/src/empha-soft/pkg
+COPY ./cmd/app/main.go ${GOPATH}/src/crud-golang
+COPY config ${GOPATH}/src/crud-golang/config
+COPY internal ${GOPATH}/src/crud-golang/internal
+COPY migration ${GOPATH}/src/crud-golang/migration
+COPY docs ${GOPATH}/src/crud-golang/docs
+COPY pkg ${GOPATH}/src/crud-golang/pkg
 
 RUN go build -o /app main.go
 
@@ -21,7 +21,7 @@ FROM alpine:latest
 
 WORKDIR /api
 COPY --from=builder /app .
-COPY --from=builder /go/src/empha-soft/config ./config
+COPY --from=builder /go/src/crud-golang/config ./config
 
 EXPOSE 8088
 
