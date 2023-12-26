@@ -43,7 +43,7 @@ go test -v -cover -race ./internal/...
 > Clone the repository
 
 ```
-git clone https://github.com/Vaixle/empha-soft.git
+git clone https://github.com/Vaixle/crud-golang.git
 ```
 
 > Run application in Docker container
