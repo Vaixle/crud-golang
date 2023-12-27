@@ -38,7 +38,7 @@ func NewRouter(handler *gin.Engine, useCase entity.TodoUseCase, l logger.Interfa
 	swaggerHandler := ginSwagger.DisablingWrapHandler(swaggerFiles.Handler, "DISABLE_SWAGGER_HTTP_HANDLER")
 	handler.GET("/swagger/*any", swaggerHandler)
 
-	//// Routers
+	// Routers
 	h := handler.Group("/api/v1")
 	h.Use(midleware.BasicAuth())
 	{

@@ -51,7 +51,7 @@ func TestController_CreateTask(t *testing.T) {
 				u.EXPECT().SaveTask(task).Return(errors.New("error save to data base"))
 			},
 			expectedStatusCode: 400,
-			expectedBody:       `{"error":"error save to data base"}`,
+			expectedBody:       `{"error":"create task"}`,
 		},
 	}
 
@@ -114,7 +114,7 @@ func TestController_GetTaskById(t *testing.T) {
 				u.EXPECT().GetTaskById(id).Return(nil, errors.New("id not found"))
 			},
 			expectedStatusCode: 400,
-			expectedBody:       `{"error":"id not found"}`,
+			expectedBody:       `{"error":"error get task by id 1"}`,
 		},
 	}
 
@@ -183,7 +183,7 @@ func TestController_GetTasks(t *testing.T) {
 				u.EXPECT().GetTasks(filters, pagination).Return(nil, errors.New("some error message"))
 			},
 			expectedStatusCode: 400,
-			expectedBody:       `{"error":"some error message"}`,
+			expectedBody:       `{"error":"error get tasks"}`,
 		},
 	}
 
